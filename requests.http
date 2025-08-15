@@ -17,4 +17,4 @@ GET http://localhost:3333/courses?orderBy=title
 GET http://localhost:3333/courses/48a445d8-b132-4842-b035-6ec9ce65da04
 
 ###
-DELETE  http://localhost:3333/courses/48a445d8-b132-4842-b035-6ec9ce65da04
+DELETE http://localhost:3333/courses/b8b55e01-62a9-4fba-8328-becd373c4edb

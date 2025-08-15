@@ -5,8 +5,8 @@ const client = new Client({
   connectionString: process.env.DATABASE_URL,
 })
 
-await client.connect()
-
 export const db = drizzle(client, {
-  logger: true,
+  logger: process.env.NODE_ENV === "development",
 })
+
+await client.connect()
