@@ -6,7 +6,7 @@ import { makeUser } from "../tests/factories/make-user.ts"
 test("delete user", async () => {
   await server.ready()
 
-  const user = await makeUser()
+  const { user } = await makeUser()
 
   const response = await request(server.server)
     .delete(`/users/${user.id}`)

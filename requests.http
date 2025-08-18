@@ -14,7 +14,17 @@ GET http://localhost:3333/courses
 GET http://localhost:3333/courses?orderBy=title
 
 ###
-GET http://localhost:3333/courses/48a445d8-b132-4842-b035-6ec9ce65da04
+GET http://localhost:3333/courses/f3899dc6-ae85-4208-b58b-9abc127c1ad6
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5NmUzZDM2Yi0wYTg3LTQ4NzgtYmNkOS03MGFmNDExNDBjZGMiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc1NTU0NDUzMX0.JzF07tux23dcIvu4ELa-qs6GuifgBD51YCmY0P-Jab0
 
 ###
 DELETE http://localhost:3333/courses/b8b55e01-62a9-4fba-8328-becd373c4edb
+
+###
+POST http://localhost:3333/sessions
+Content-Type: application/json
+
+{
+  "email": "Coralie21@gmail.com",
+  "password": "123456"
+}

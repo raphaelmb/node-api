@@ -11,6 +11,7 @@ import { createUserRoute } from "./routes/create-user.ts";
 import { getUsersRoute } from "./routes/get-users.ts";
 import { deleteUserRoute } from "./routes/delete-user.ts";
 import { getUserByIdRoute } from "./routes/get-users-by-id.ts";
+import { loginRoute } from "./routes/login.ts";
 
 const server = fastify({
   logger: {
@@ -55,5 +56,7 @@ server.register(createUserRoute)
 server.register(deleteUserRoute)
 server.register(getUsersRoute)
 server.register(getUserByIdRoute)
+
+server.register(loginRoute)
 
 export { server }

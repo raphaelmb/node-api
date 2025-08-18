@@ -7,7 +7,7 @@ import { makeUser } from "../tests/factories/make-user.ts"
 test("get user by id", async () => {
   await server.ready()
 
-  const user = await makeUser()
+  const { user } = await makeUser()
 
   const response = await request(server.server)
     .get(`/users/${user.id}`)

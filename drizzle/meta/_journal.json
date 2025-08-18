@@ -36,6 +36,13 @@
       "when": 1755197902399,
       "tag": "0004_chemical_the_renegades",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1755537972601,
+      "tag": "0005_majestic_surge",
+      "breakpoints": true
     }
   ]
 }

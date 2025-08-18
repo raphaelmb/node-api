@@ -1,2 +1,1 @@
-CREATE DATABASE IF NOT EXISTS challenge;
-CREATE DATABASE IF NOT EXISTS challenge_test;
+CREATE DATABASE challenge_test;
