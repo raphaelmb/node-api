@@ -19,7 +19,7 @@ test("login", async () => {
   })
 })
 
-test("Missing email failed login", async () => {
+test("missing email failed login", async () => {
   await server.ready()
 
   const { passwordBeforeHash } = await makeUser()
@@ -35,7 +35,7 @@ test("Missing email failed login", async () => {
   })
 })
 
-test("Wrong password failed login", async () => {
+test("wrong password failed login", async () => {
   await server.ready()
 
   const { user } = await makeUser()

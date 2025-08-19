@@ -20,3 +20,26 @@ test("create a course", async () => {
     courseId: expect.any(String)
   })
 })
+
+test("same title error", async () => {
+  await server.ready()
+
+  const { token } = await makeAuthenticatedUser("manager")
+
+  await request(server.server)
+    .post("/courses")
+    .set("Content-Type", "application/json")
+    .set("Authorization", token)
+    .send({ title: "test-title" })
+
+  const response = await request(server.server)
+    .post("/courses")
+    .set("Content-Type", "application/json")
+    .set("Authorization", token)
+    .send({ title: "test-title" })
+
+  expect(response.status).toBe(400)
+  expect(response.body).toEqual({
+    message: expect.any(String)
+  })
+})

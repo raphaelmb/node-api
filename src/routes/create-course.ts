@@ -4,6 +4,7 @@ import { courses } from "../database/schema.ts"
 import { uuid, z } from "zod"
 import { checkRequestJWT } from "./hooks/check-request-jwt.ts"
 import { checkUserRole } from "./hooks/check-user-role.ts"
+import { eq } from "drizzle-orm"
 
 export const createCourseRoute: FastifyPluginAsyncZod = async (server) => {
 server.post("/courses", {
@@ -15,11 +16,15 @@ server.post("/courses", {
       title: z.string().min(5, "Title must have at least 5 characters")
     }),
     response: {
-      201: z.object({ courseId: uuid() }).describe("Course created successfully")
+      201: z.object({ courseId: uuid() }).describe("Course created successfully"),
+      400: z.object({ message: z.string() })
     }
   }
 }, async (request, reply) => {
   const { title } = request.body
+
+  const [courseExists] = await db.select().from(courses).where(eq(courses.title, title))
+  if (courseExists) return reply.status(400).send({ message: "Title already registered" })
 
   const [result] = await db.insert(courses).values({ title }).returning()
 
