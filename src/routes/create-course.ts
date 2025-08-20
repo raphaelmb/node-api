@@ -17,14 +17,14 @@ server.post("/courses", {
     }),
     response: {
       201: z.object({ courseId: uuid() }).describe("Course created successfully"),
-      400: z.object({ message: z.string() })
+      409: z.object({ message: z.string() })
     }
   }
 }, async (request, reply) => {
   const { title } = request.body
 
   const [courseExists] = await db.select().from(courses).where(eq(courses.title, title))
-  if (courseExists) return reply.status(400).send({ message: "Title already registered" })
+  if (courseExists) return reply.status(409).send({ message: "Title already registered" })
 
   const [result] = await db.insert(courses).values({ title }).returning()
 

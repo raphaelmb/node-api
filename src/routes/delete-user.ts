@@ -14,10 +14,14 @@ export const deleteUserRoute: FastifyPluginAsyncZod = async (server) => {
       summary: "Delete user by id",
       response: {
         204: z.null(),
+        404: z.null()
       }
     }
   }, async (request, reply) => {
     const { id } = request.params
+
+    const [userExists] = await db.select().from(users).where(eq(users.id, id))
+    if (!userExists) return reply.status(404).send()
 
     await db.delete(users).where(eq(users.id, id))
 

@@ -46,7 +46,7 @@ test("same email error", async () => {
       password: await hash("12345")
     })
 
-  expect(response.status).toBe(400)
+  expect(response.status).toBe(409)
   expect(response.body).toEqual({
     message: expect.any(String)
   })

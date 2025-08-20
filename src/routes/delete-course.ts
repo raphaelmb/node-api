@@ -14,10 +14,14 @@ export const deleteCourseRoute: FastifyPluginAsyncZod = async (server) => {
       summary: "Delete course by id",
       response: {
         204: z.null(),
+        404: z.null()
       }
     }
   }, async (request, reply) => {
     const { id } = request.params
+
+    const [courseExists] = await db.select().from(courses).where(eq(courses.id, id))
+    if (!courseExists) return reply.status(404).send()
 
     await db.delete(courses).where(eq(courses.id, id))
 

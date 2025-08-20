@@ -38,7 +38,7 @@ test("same title error", async () => {
     .set("Authorization", token)
     .send({ title: "test-title" })
 
-  expect(response.status).toBe(400)
+  expect(response.status).toBe(409)
   expect(response.body).toEqual({
     message: expect.any(String)
   })
