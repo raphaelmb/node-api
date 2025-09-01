@@ -13,6 +13,7 @@ import { deleteUserRoute } from "./routes/delete-user.ts";
 import { getUserByIdRoute } from "./routes/get-users-by-id.ts";
 import { loginRoute } from "./routes/login.ts";
 import { createEnrollmentRoute } from "./routes/create-enrollment.ts";
+import { env } from "./env.ts";
 
 const server = fastify({
   logger: {
@@ -26,7 +27,7 @@ const server = fastify({
   }
 }).withTypeProvider<ZodTypeProvider>()
 
-if (process.env.NODE_ENV === "development") {
+if (env.NODE_ENV === "development") {
   server.register(fastifySwagger, {
     openapi: {
       info: {

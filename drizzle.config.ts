@@ -1,11 +1,10 @@
 import { defineConfig } from 'drizzle-kit'
-
-if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL env variable is required")
+import { env } from './src/env.ts'
 
 export default defineConfig({
   dialect: "postgresql",
   dbCredentials: {
-    url: process.env.DATABASE_URL
+    url: env.DATABASE_URL
   },
   out: "./drizzle",
   schema: "./src/database/schema.ts"
